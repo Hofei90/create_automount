@@ -1,4 +1,5 @@
 # create_automount
+<<<<<<< HEAD
 Hilfsskript zum Erstellen aller notwendigen Skripte nach der Anleitung im Deutschen Raspberry Pi Forum
 
 Das vollständige Tutorial zum Einbinden von Netzwerkfreigaben mit Hilfe einer Systemd Mount Unit findet sich im 
@@ -41,3 +42,6 @@ Die Funktionalität des Skriptes wurde mit folgendem Betriebsystem getestet:
 
 ## Weiteres
 Das Skript soll die Einrichtung beschleunigen und vereinfachen. Es kann jedoch nicht das nötige Wissen im Umgang mit Linux bezüglich Rechteverwaltung, Systemd, Service Units und Benutzerverwaltung etc. ersetzen.
+=======
+Hilfsskript zum erstellen aller notwendigen Skripte nach der Tutorialanleitung im Raspberry Pi Forum
+>>>>>>> 3379efe... Initial commit
