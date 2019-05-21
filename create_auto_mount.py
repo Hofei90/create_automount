@@ -53,10 +53,9 @@ def zugangsdaten_erstellen(zugangsdaten):
     with open(SPEICHERORT_ZUGANGSDATEN, "w") as file:
         file.write("username={username}\npassword={pw}".format(username=zugangsdaten["username"],
                                                                pw=zugangsdaten["pw"]))
-    print("Zugangsdaten erstellt - Pfad: {}".format(SPEICHERORT_ZUGANGSDATEN))
     shutil.chown(SPEICHERORT_ZUGANGSDATEN, "root", "root")
     os.chmod(SPEICHERORT_ZUGANGSDATEN, 600)
-    print("Rechte gesetzt")
+    print("Zugangsdaten erstellt - Pfad: {}".format(SPEICHERORT_ZUGANGSDATEN))
 
 
 def ordner_erstellen(pfad):
@@ -103,7 +102,7 @@ def mount_unit_erstellen(inhalt, mount_pfad):
         file.write(inhalt)
     shutil.chown(pfad, "root", "root")
     os.chmod(pfad, 644)
-    print("Rechte gesetzt")
+    print("Datei {} erstellt".format(pfad))
     return filename
 
 
@@ -112,7 +111,7 @@ def ping_server_kopieren():
     shutil.copy(src, PFAD_PING_SERVER)
     shutil.chown(PFAD_PING_SERVER, "root", "root")
     os.chmod(PFAD_PING_SERVER, 755)
-    print("Rechte gesetzt")
+    print("Datei {} erstellt".format(PFAD_PING_SERVER))
 
 
 def ip_pingziel_eingeben():
@@ -120,7 +119,7 @@ def ip_pingziel_eingeben():
     return ip_pingziel
 
 
-def serverctl_service_erstellen(ip_pingziel):
+def ping_server_service_erstellen(ip_pingziel):
     inhalt = """[Unit]
 Description=serverctl.service:   Waiting for Network or Server to be up
 After=network.target
@@ -135,7 +134,7 @@ WantedBy=multi-user.target""".format(ip_pingziel)
         file.write(inhalt)
     shutil.chown(PFAD_PING_SERVER_SERVICE, "root", "root")
     os.chmod(PFAD_PING_SERVER_SERVICE, 644)
-    print("Rechte gesetzt")
+    print("Datei {} erstellt".format(PFAD_PING_SERVER_SERVICE))
 
 
 def mount_unit_aktivieren(mount_unit):
@@ -164,7 +163,7 @@ def eingabe_sichern(pfad_mountpunkt, zugangsdaten, adresse, optionen, ip_pingzie
         file.write(ausgabe_toml)
     shutil.chown(pfad, "root", "root")
     os.chmod(pfad, 600)
-    print("Datei {} gespeichert".format(pfad))
+    print("Datei {} erstellt".format(pfad))
 
 
 def lade_daten(cfg):
@@ -202,7 +201,7 @@ def main():
                                                                                        optionen),
                                           pfad_mountpunkt)
         ping_server_kopieren()
-        serverctl_service_erstellen(ip_pingziel)
+        ping_server_service_erstellen(ip_pingziel)
         mount_unit_aktivieren(mount_unit)
 
     else:
