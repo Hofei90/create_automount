@@ -1,33 +1,31 @@
 # create_automount
-Hilfsskript zum erstellen aller notwendigen Skripte nach der Tutorialanleitung im Raspberry Pi Forum.
+Hilfsskript zum Erstellen aller notwendigen Skripte nach der Anleitung im Deutschen Raspberry Pi Forum
 
-Das vollständige Tutorial zum einbinden von Netzwerkfreigaben mit Hilfe einer Systemd Mount Unit findet sich im 
-Deutschen Raspberry Pi Forum und folgendem Link:
+Das vollständige Tutorial zum Einbinden von Netzwerkfreigaben mit Hilfe einer Systemd Mount Unit findet sich im 
+Deutschen Raspberry Pi Forum unter folgendem Link:
      
      https://forum-raspberrypi.de/forum/thread/40061-netzwerkfreigabe-mounten-mit-systemd-mount-unit/
 
 ## Vorbereitungen
-Zur erfolgreichen Ausführungen des Skriptes wird mindestens _Python 3.5_ oder höher benötigt.
+Zur erfolgreichen Ausführung des Skriptes wird mindestens _Python 3.5_ oder höher benötigt.
 
 ### Module installieren
-Das Skript benötigt folgende Module 
+Das Skript benötigt folgendes Modul:
 * toml
 
-Zum installieren der Module folgenden Befehl ausführen:
+Zum Installieren des Moduls folgenden Befehl ausführen:
 
     pip3 install -r requirements.txt
     
 ## Verwendung
-Das Skript benötigt zur erfolgreichen Ausführung root-Rechte.
-Achtung! Generell gilt: Blindes Ausführen von Skripten mit root Rechten kann das System schädigen oder kompremetieren.
+Das Skript benötigt zur erfolgreichen Ausführung root Rechte.
+Achtung! Generell gilt: Blindes Ausführen von Skripten mit root Rechten kann das System schädigen oder kompromittieren.
 Die Verwendung des Skriptes erfolgt auf eigene Gefahr.
 
 ### Ausführung
-Es gibt 2 Möglichkeiten das Skript zu starten.
-Variante 1 bietet eine geführte Eingabeaufforderung aller nötigen Daten. Anschließend wird man gefragt ob man die
-eingegebenen Daten in einer Datei speichern möchte. Dies hat den Vorteil, dass man bei einer erneuten Einrichtung des 
-Pi's oder auf anderen Pi's die Daten nicht mehr selbst eingeben muss, sondern dass sich das Skript die Daten aus der 
-Datei einließt. Dies spart Zeit und Fehler. Das ist Variante 2.
+Es gibt zwei Möglichkeiten, das Skript zu starten.
+Variante 1 bietet eine geführte Eingabeaufforderung zum Eintrag der notwendigen Daten. Anschließend besteht die Möglichkeit, diese Daten in einer Datei zu speichern. 
+Variante 2: Bei einer erneuten Einrichtung des selben bzw. weiteren Raspberry Pi können die Daten aus der unter Variante 1 erstellten Datei eingelesen werden. Dies spart Zeit und ist weniger fehleranfällig. 
 
 Variante 1:  
 
@@ -37,11 +35,9 @@ Variante 2:
 
     python3 create_auto_mount.py <dateiname_cfg.toml>
 
-### Kompatiblität:
+### Kompatibilität:
 Die Funktionalität des Skriptes wurde mit folgendem Betriebsystem getestet:
 * Raspbian Stretch 4.14.79-v7+
 
 ## Weiteres
-Das Skript soll die Einrichtung beschleunigen und vereinfachen. Es kann jedoch nicht das nötige Wissen ersetzen, welches
-man sich im Umgang mit Linux bezüglich Rechteverwaltung, Systemd, Service Untis und Benutzerverwaltung
-aneignen sollte.
+Das Skript soll die Einrichtung beschleunigen und vereinfachen. Es kann jedoch nicht das nötige Wissen im Umgang mit Linux bezüglich Rechteverwaltung, Systemd, Service Units und Benutzerverwaltung etc. ersetzen.
