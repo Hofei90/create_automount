@@ -36,8 +36,9 @@ Variante 2:
     python3 create_auto_mount.py <dateiname_cfg.toml>
 
 ### Kompatibilität:
-Die Funktionalität des Skriptes wurde mit folgendem Betriebsystem getestet:
+Die Funktionalität des Skriptes wurde mit folgenden Betriebsystemen getestet:
 * Raspbian Stretch 4.14.79-v7+
+* Raspbian Buster 4.19.58-v7l+
 
 ## Weiteres
 Das Skript soll die Einrichtung beschleunigen und vereinfachen. Es kann jedoch nicht das nötige Wissen im Umgang mit Linux bezüglich Rechteverwaltung, Systemd, Service Units und Benutzerverwaltung etc. ersetzen.
