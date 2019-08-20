@@ -19,7 +19,7 @@ PFAD_SYSTEMD_SERVICE_UNIT = "/etc/systemd/system"
 
 def pfadeingabe():
     ordner = input("Name für neuen Mountordner: ")
-    pfad = input("Wenn leer: -> /media ")
+    pfad = input("Verzeichnis für den Mountordner, wenn leer: -> /media ")
     if pfad == "":
         pfad = "/media"
     return os.path.join(pfad, ordner)
@@ -37,8 +37,8 @@ def adresse_eingeben():
 
 
 def optionen_eingeben():
-    uid = "uid={}".format(input("uid: Bsp. 1000 "))
-    gid = "gid={}".format(input("gid: Bsp. 1000 "))
+    uid = "uid={}".format(input("uid: Bsp. '1000': "))
+    gid = "gid={}".format(input("gid: Bsp. '1000': "))
     eingabe_liste = [uid, gid]
     eingabe = True
     while eingabe:
