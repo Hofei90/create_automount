@@ -115,7 +115,7 @@ def ping_server_kopieren():
 
 
 def ip_pingziel_eingeben():
-    ip_pingziel = input("IP Pingziel eingeben: ")
+    ip_pingziel = input("IP Pingziel zur Überprüfung der Netwerkverfügbarkeit eingeben: ")
     return ip_pingziel
 
 
@@ -147,6 +147,8 @@ def mount_unit_aktivieren(mount_unit):
         cmd = shlex.split("systemctl enable {}".format(mount_unit))
         start = subprocess.Popen(cmd, stdout=subprocess.PIPE)
         print(start.stdout.read())
+    else:
+        print("Hinweis, wird eine Service Unit verändert muss anschließend 'systemctl daemon-reload' ausgeführt werden")
 
 
 def eingabe_sichern(pfad_mountpunkt, zugangsdaten, adresse, optionen, ip_pingziel):
@@ -176,7 +178,15 @@ def lade_daten(cfg):
         raise ValueError("Dateiformat falsch")
 
 
+def willkommen():
+    text = """Dieses Skript soll die Einrichtung zum Einhängen von Netzwerkfreigaben beschleunigen.
+    Es kann nicht das notwendige Wissen zu den einzelnen Punkten während der Erstellung ersetzen.
+    Verwendung und Benutzung auf eigene Gefahr!"""
+    print(text)
+
+
 def main():
+    willkommen()
     if platform.system() == "Linux":
         if len(sys.argv) > 1:
             daten = lade_daten(sys.argv[1])
@@ -191,6 +201,8 @@ def main():
             adresse = adresse_eingeben()
             optionen = optionen_eingeben()
             ip_pingziel = ip_pingziel_eingeben()
+            print("Die Konfigruationsdatei enthält wenn sie gespeichert wird alle Eingaben einschließlich Passwörter "
+                  "in Klartext!")
             eingabe = input("Eingaben sichern? (j|n)")
             if eingabe == "j":
                 eingabe_sichern(pfad_mountpunkt, zugangsdaten, adresse, optionen, ip_pingziel)
