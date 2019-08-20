@@ -54,7 +54,7 @@ def zugangsdaten_erstellen(zugangsdaten):
         file.write("username={username}\npassword={pw}".format(username=zugangsdaten["username"],
                                                                pw=zugangsdaten["pw"]))
     shutil.chown(SPEICHERORT_ZUGANGSDATEN, "root", "root")
-    os.chmod(SPEICHERORT_ZUGANGSDATEN, 600)
+    os.chmod(SPEICHERORT_ZUGANGSDATEN, 0o600)
     print("Zugangsdaten erstellt - Pfad: {}".format(SPEICHERORT_ZUGANGSDATEN))
 
 
@@ -101,7 +101,7 @@ def mount_unit_erstellen(inhalt, mount_pfad):
     with open(pfad, "w") as file:
         file.write(inhalt)
     shutil.chown(pfad, "root", "root")
-    os.chmod(pfad, 644)
+    os.chmod(pfad, 0o644)
     print("Datei {} erstellt".format(pfad))
     return filename
 
@@ -110,7 +110,7 @@ def ping_server_kopieren():
     src = os.path.join(SKRIPTPFAD, "ping_server.py")
     shutil.copy(src, PFAD_PING_SERVER)
     shutil.chown(PFAD_PING_SERVER, "root", "root")
-    os.chmod(PFAD_PING_SERVER, 755)
+    os.chmod(PFAD_PING_SERVER, 0o755)
     print("Datei {} erstellt".format(PFAD_PING_SERVER))
 
 
@@ -133,7 +133,7 @@ WantedBy=multi-user.target""".format(ip_pingziel)
     with open(PFAD_PING_SERVER_SERVICE, "w") as file:
         file.write(inhalt)
     shutil.chown(PFAD_PING_SERVER_SERVICE, "root", "root")
-    os.chmod(PFAD_PING_SERVER_SERVICE, 644)
+    os.chmod(PFAD_PING_SERVER_SERVICE, 0o644)
     print("Datei {} erstellt".format(PFAD_PING_SERVER_SERVICE))
 
 
@@ -164,7 +164,7 @@ def eingabe_sichern(pfad_mountpunkt, zugangsdaten, adresse, optionen, ip_pingzie
     with open(pfad, "w") as file:
         file.write(ausgabe_toml)
     shutil.chown(pfad, "root", "root")
-    os.chmod(pfad, 600)
+    os.chmod(pfad, 0o600)
     print("Datei {} erstellt".format(pfad))
 
 
@@ -180,8 +180,8 @@ def lade_daten(cfg):
 
 def willkommen():
     text = """Dieses Skript soll die Einrichtung zum Einhängen von Netzwerkfreigaben beschleunigen.
-    Es kann nicht das notwendige Wissen zu den einzelnen Punkten während der Erstellung ersetzen.
-    Verwendung und Benutzung auf eigene Gefahr!"""
+Es kann nicht das notwendige Wissen zu den einzelnen Punkten während der Erstellung ersetzen.
+Verwendung und Benutzung auf eigene Gefahr!"""
     print(text)
 
 
